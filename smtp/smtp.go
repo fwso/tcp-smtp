@@ -78,6 +78,7 @@ func (c *Client) Auth(user, password string) error {
 	if code != "235" {
 		return fmt.Errorf("Auth failed: %s#%s\n", code, message)
 	}
+	log.Printf("Auth: %s#%s\n", code, message)
 	return nil
 }
 
@@ -90,6 +91,7 @@ func (c *Client) Close() error {
 	if code != "221" {
 		return fmt.Errorf("Close: failed to quit: %s#%s", code, message)
 	}
+	log.Printf("Close: %s#%s\n", code, message)
 	return c.conn.Close()
 }
 
